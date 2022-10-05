@@ -1,5 +1,11 @@
-export default function App (){
-    return (
-        <h1>Testando</h1>
-    )
+import GlobalStyle from "./globalStyles";
+import Header from "./Header";
+
+export default function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <Header />
+    </>
+  );
 }
