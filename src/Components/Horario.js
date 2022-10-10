@@ -3,9 +3,7 @@ import styled from "styled-components";
 export default function Horario(props) {
   const { horarios } = props;
   const { date, id, showtimes, weekday } = horarios;
-  console.log(date, id, showtimes, weekday);
-  console.log(showtimes);
-  console.log(props.horarios);
+  console.log(weekday, showtimes);
   return (
     <Horarios>
       <p>
