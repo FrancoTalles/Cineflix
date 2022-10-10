@@ -41,6 +41,8 @@ export default function Sessao() {
             isAvailable={assento.isAvailable}
             id={assento.id}
             name={assento.name}
+            seats={seats}
+            index={index}
           />
         ))}
       </Assentos>
