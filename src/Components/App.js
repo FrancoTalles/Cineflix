@@ -2,6 +2,7 @@ import Filmes from "./Filmes";
 import GlobalStyle from "./globalStyles";
 import Header from "./Header";
 import Horarios from "./Horarios";
+import Sessao from "./Sessao";
 
 export default function App() {
   return (
@@ -9,7 +10,8 @@ export default function App() {
       <GlobalStyle />
       <Header />
       {/* <Filmes /> */}
-      <Horarios />
+      {/* <Horarios /> */}
+      <Sessao />
     </>
   );
 }
