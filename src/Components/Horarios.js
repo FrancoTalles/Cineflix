@@ -3,12 +3,14 @@ import { useEffect, useState } from "react";
 import styled from "styled-components";
 import Horario from "./Horario";
 import Carregando from "../Assets/Img/loading.gif";
+import { useParams } from "react-router-dom";
 
 export default function Horarios() {
   const [horarios, setHorarios] = useState(null);
+  const {idFilme} = useParams();
   useEffect(() => {
     const URL =
-      "https://mock-api.driven.com.br/api/v8/cineflex/movies/11/showtimes";
+      `https://mock-api.driven.com.br/api/v5/cineflex/movies/${idFilme}/showtimes`;
     const promise = axios.get(URL);
 
     promise.then((resposta) => {

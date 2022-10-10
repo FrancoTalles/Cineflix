@@ -1,15 +1,17 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import Carregando from "../Assets/Img/loading.gif";
 import Assento from "./Assento";
 
 export default function Sessao() {
   const [seats, setSeats] = useState(null);
+  const {idSessao} = useParams();
 
   useEffect(() => {
     const URL =
-      "https://mock-api.driven.com.br/api/v5/cineflex/showtimes/161/seats";
+      `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`;
     const promise = axios.get(URL);
 
     promise.then((resposta) => {
@@ -28,7 +30,7 @@ export default function Sessao() {
     );
   }
   return (
-    <>
+    <Body>
       <EscolhaTexto>
         <h1>Selecione o(s) assento(s)</h1>
       </EscolhaTexto>
@@ -56,9 +58,26 @@ export default function Sessao() {
           <p>Indisponível</p>
         </Indisponivel>
       </Exemplo>
-    </>
+      <Comprador>
+        <h1>Nome do comprador:</h1>
+        <input type="text" placeholder="Digite seu nome..."></input>
+      </Comprador>
+      <CPF>
+        <h1>CPF do comprador:</h1>
+        <input placeholder="Digite seu CPF..."></input>
+      </CPF>
+      <BotaoReserva>
+        <button>Reservar assento(s)</button>
+      </BotaoReserva>
+    </Body>
   );
 }
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 const EscolhaTexto = styled.div`
   width: 100%;
@@ -81,7 +100,9 @@ const Assentos = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-left: 24px;
+  margin-right: 24px;
 `;
 
 const Loading = styled.div`
@@ -171,5 +192,77 @@ const Disponivel = styled.div`
     letter-spacing: -0.013em;
     color: #4e5a65;
     margin-top: 8px;
+  }
+`;
+
+const Comprador = styled.div`
+  margin-top: 45px;
+  width: 87.2%;
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #293845;
+  }
+  input {
+    width: 100%;
+    height: 51px;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #d4d4d4;
+    font-size: 18px;
+    &::placeholder {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 21px;
+      color: #afafaf;
+    }
+  }
+`;
+
+const CPF = styled.div`
+  margin-top: 10px;
+  width: 87.2%;
+  h1 {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+    color: #293845;
+  }
+  input {
+    width: 100%;
+    height: 51px;
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #d4d4d4;
+    font-size: 18px;
+    &::placeholder {
+      font-family: "Roboto", sans-serif;
+      font-weight: 400;
+      font-style: italic;
+      font-size: 18px;
+      line-height: 21px;
+      color: #afafaf;
+    }
+  }
+`;
+
+const BotaoReserva = styled.div`
+  margin-top: 57px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  button{
+    width: 60%;
+    height: 42px;
+    background-color: #e8833a;
+    border: 1px solid #e8833a;
+    border-radius: 3px;
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 21px;
+    font-family: "Roboto", sans-serif;
   }
 `;

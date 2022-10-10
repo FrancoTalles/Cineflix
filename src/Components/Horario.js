@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 export default function Horario(props) {
@@ -11,7 +12,9 @@ export default function Horario(props) {
       </p>
       <Botoes>
         {showtimes.map((hora) => (
+          <Link to={`assentos/${hora.id}`}>
           <button key={hora.id}>{hora.name}</button>
+          </Link>
         ))}
       </Botoes>
     </Horarios>

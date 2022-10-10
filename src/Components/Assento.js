@@ -16,7 +16,7 @@ const Lugar = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-right: 12px;
+  margin-right: 10px;
   margin-bottom: 18px;
   font-family: "Roboto", sans-serif;
   font-size: 11px;
